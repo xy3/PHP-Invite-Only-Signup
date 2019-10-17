@@ -1,2 +1,2 @@
 # Ignore private dbc connection file
-src/php/dbc.inc.php
+# src/php/dbc.inc.php
