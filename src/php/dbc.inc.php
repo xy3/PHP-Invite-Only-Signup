@@ -1,7 +1,7 @@
 <?php 
 
 DEFINE ('DB_HOST', 'localhost');
-DEFINE ('DB_USER', 'username');
+DEFINE ('DB_USER', 'testing_gitignore');
 DEFINE ('DB_PASS', 'password');
 DEFINE ('DB_NAME', 'database');
 
