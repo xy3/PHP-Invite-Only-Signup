@@ -5,3 +5,5 @@ Add this script to your site to manage users and allow registration by invite on
 
 
 ## Work in progress.
+
+All contributions are welcome.
