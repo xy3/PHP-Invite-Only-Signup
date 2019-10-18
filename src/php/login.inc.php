@@ -25,12 +25,13 @@ if (isset($_SESSION['logged_in']) && isset($_SESSION['logged_in']))
 
 else { ?>
 
+	<h1>Login</h1>
 	<form class="loginform" action="." method="post">
-		<h1>Login</h1>
 		<input name="username" type="text" placeholder="Username" autofocus>
 		<input name="password" type="password" placeholder="Password">
 		<button type="submit">Submit</button>
 	</form>
+	<a href="register.php">Register</a>
 
 <?php }
 

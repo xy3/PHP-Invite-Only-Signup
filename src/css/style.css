@@ -1,0 +1,54 @@
+body, html{
+	max-width: 100%;
+	background-color: #1D272E;
+}
+
+
+h1, h2, h3, p {
+	color: #ccdbe6;
+	font-family: sans-serif;
+	font-weight: normal;
+	font-style: normal;
+}
+
+a {
+	color: #FFFFFF;
+	font-family: sans-serif;
+	text-decoration: none;
+}
+
+* {
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+
+label {
+	font-family: sans-serif;
+	color: white;
+}
+
+input, button {
+	padding: 9px;
+	height: 35px;
+	outline: none;
+	margin: 5px 0;
+	border-radius: 2px;
+	border: 2px solid #2f3f4a;
+	background-color: #242a2f;
+	color: #99adbb;
+	display: block;
+}
+button, input[type="submit"] {
+	background-color: #fa424f;
+	cursor: pointer;
+	border: 2px solid #c33f49;
+	color: #fff;
+}
+
+.large_btn {
+	font-size: 1.5em;
+	height: unset;
+}
+
