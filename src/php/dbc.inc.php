@@ -1,11 +1,22 @@
 <?php 
 
-DEFINE ('DB_HOST', 'localhost');
-DEFINE ('DB_USER', 'username');
-DEFINE ('DB_PASS', 'password');
-DEFINE ('DB_NAME', 'database');
+$host = 'localhost';
+$db   = 'users';
+$user = 'root';
+$pass = '';
+$charset = 'utf8mb4';
 
-$dbc = @mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME) OR die('Could not connect to SQL Server '. mysqli_connect_error());
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$options = [
+	PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+	PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+	PDO::ATTR_EMULATE_PREPARES   => false,
+];
 
+try {
+	 $pdo = new PDO($dsn, $user, $pass, $options);
+} catch (\PDOException $e) {
+	 throw new \PDOException($e->getMessage(), (int)$e->getCode());
+}
 
- ?>
+?>
