@@ -3,12 +3,13 @@
 session_start();
 
 require 'functions.inc.php';
+require 'dbc.inc.php';
 
 
 if (isset($_POST['username']) && isset($_POST['password'])) {
 	$user = $_POST['username'];
 	$pass = $_POST['password'];
-	$_SESSION['logged_in'] = verify_login($user, $pass);
+	$_SESSION['logged_in'] = verify_login($dbc, $user, $pass);
 	header('Location: .');
 }
 
@@ -21,6 +22,7 @@ if (isset($_SESSION['logged_in']) && isset($_SESSION['logged_in']))
 {
 	load_view($view);
 }
+
 else { ?>
 
 	<form class="loginform" action="." method="post">

@@ -1,22 +1,17 @@
 <?php 
 
-$host = 'localhost';
-$db   = 'invite_only';
-$user = 'root';
-$pass = '';
-$charset = 'utf8mb4';
+DEFINE ('DB_HOST', 'localhost');
+DEFINE ('DB_USER', 'root');
+DEFINE ('DB_PASS', '');
+DEFINE ('DB_NAME', 'invite_only');
 
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$options = [
-	PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-	PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-	PDO::ATTR_EMULATE_PREPARES   => false,
-];
+$dbc = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-try {
-	 $pdo = new PDO($dsn, $user, $pass, $options);
-} catch (\PDOException $e) {
-	 throw new \PDOException($e->getMessage(), (int)$e->getCode());
+/* check connection */
+if ($dbc->connect_error)
+{
+    die('Connect Error (' . $dbc->connect_errno . ') '
+            . $dbc->connect_error);
 }
 
 ?>
