@@ -1,7 +1,7 @@
 <?php 
 
 $host = 'localhost';
-$db   = 'users';
+$db   = 'invite_only';
 $user = 'root';
 $pass = '';
 $charset = 'utf8mb4';

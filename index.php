@@ -14,6 +14,7 @@
 
 		<?php 
 
+		$view = 'home';
 		require_once './src/php/login.inc.php';
 
 		?>

@@ -1,14 +1,18 @@
 <?php 
 
-function logout(){
+function logout()
+{
 	unset($_SESSION['logged_in']);
 	header('Location: .');
 }
 
-function load_view($view) {
-	require_once "./src/php/$view.php";
+function load_view($view)
+{
+	require_once "src/views/$view.php";
 }
 
-function check_password($password){
-	return password_verify($password, $hash);
+function verify_login($user, $pass)
+{
+	return true;
+	// return password_verify($password, $hash);
 }
