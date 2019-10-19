@@ -2,8 +2,8 @@
 
 session_start();
 
-require 'functions.inc.php';
-require 'dbc.inc.php';
+require_once 'functions.inc.php';
+require_once 'dbc.inc.php';
 
 
 if (isset($_POST['username']) && isset($_POST['password'])) {

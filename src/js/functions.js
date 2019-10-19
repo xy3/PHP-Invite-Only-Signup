@@ -2,43 +2,35 @@
 //    Validate Register form
 // ==============================
 
+jQuery.validator.addMethod("alphanumeric", function(value, element) {
+    return /^\w+$/i.test(value);
+}, "Only letters, numbers and underscores can be used.");
+
+
 jQuery(document).ready(function() {
    $("#register_form").validate({
       rules: {
          email: {
-            required: true,
             email: true,
             maxlength: 255,
          },
-         user: {
-         	required: true,
-         	minlength: 4
+         username: {
+         	minlength: 4,
+         	alphanumeric: true,
          },
-         pass: {
-         	required: true,
+         password: {
          	minlength: 6
          },
          confirm_pass: {
-         	required: true,
          	minlength: 6,
       		equalTo: "#password"
+         },
+         code : {
+         	alphanumeric: true
          }
       },
       messages: {
-      	email: {
-      		required: "Please enter your email",
-      	},
-      	user: {
-      		required: "Please enter your username",
-      		minlength: "Minimum username length is 4"
-      	},
-      	pass: {
-      		required: "Please enter your password",
-      		minlength: "Minimum password length is 6"
-      	},
       	confirm_pass: {
-      		required: "Please enter your password",
-      		minlength: "Minimum password length is 6",
       		equalTo: "Passwords do not match"
       	},
       }
