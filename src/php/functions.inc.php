@@ -1,41 +1,52 @@
 <?php 
 
+session_start();
+
 require_once 'dbc.inc.php';
 
-function success($msg='') {
-	echo json_encode(array('status' => 1, 'message' => $msg));
+function status($status, $msg='') {
+	echo json_encode(array('status' => $status, 'message' => $msg));
 }
-function failure($msg='') {
-	echo json_encode(array('status' => 0, 'message' => $msg));
+function success($msg='') { return status(1, $msg); }
+function failure($msg='') { return status(0, $msg); }
+
+function show_view($view) {
+	require_once "src/views/$view.php";
 }
 
 
-if (isset($_POST['action'])) {
-	$_POST['action']($dbc, $_POST);
+if (isset($_REQUEST['action'])) {
+	$_REQUEST['action']($dbc, $_REQUEST);
 }
+
+
+
+//=================== Begin Login + Register ==================
+
+
+function login($dbc, $data)
+{
+	$user = strtolower($data['user']);
+	$pass = strtolower($data['pass']);
+	$type = strpos($user, '@') ? 'email' : 'username';
+
+	$result = $dbc->query("SELECT * FROM users WHERE $type='$user'");
+	if (!$result || !$result->num_rows)
+		return failure("Login is incorrect");
+
+	$hash = $result->fetch_assoc()['password'];
+	
+	$status = password_verify($pass, $hash);
+	$_SESSION['logged_in'] = $status;
+	
+	return $status ? success() : failure("Login is incorrect");
+}
+
 
 function logout()
 {
 	unset($_SESSION['logged_in']);
 	header('Location: .');
-}
-
-function load_view($view)
-{
-	require_once "src/views/$view.php";
-}
-
-function verify_login($dbc, $user, $pass)
-{
-	$user = strtolower($user);
-	$result = $dbc->query("SELECT * FROM users WHERE username='$user'");
-	
-	if (!$result || !$result->num_rows)
-		return false;
-
-	$userdata = $result->fetch_assoc();
-	$hash = $userdata['password'];
-	return password_verify($pass, $hash);
 }
 
 
@@ -88,3 +99,4 @@ function register($dbc, $data)
 	return success();
 
 }
+

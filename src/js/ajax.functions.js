@@ -26,5 +26,30 @@ jQuery(document).ready(function($) {
 			})
 	});
 
+	$('#login_form').submit(function(event)
+	{
+		event.preventDefault();
+		
+		var form_data = $('#login_form').serializeArray();
+		form_data.push({name: 'action', value: 'login'});
+		
+		$.ajax({
+				url: 'src/php/functions.inc.php',
+				type: 'POST',
+				dataType: 'json',
+				data: form_data,
+				success: function(data) {
+					if (data.status) {
+						$('#login_form')[0].reset();
+						location.reload();
+					} else {
+						$('#result').text(data.message);
+					}
+				},
+				error: function(xhr){
+					console.log(xhr.responseText);
+				}
+			})
+	});
 
 });

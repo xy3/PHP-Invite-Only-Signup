@@ -20,6 +20,8 @@
 		?>
 
 		<script src="./src/js/jquery-3.4.0.min.js"></script>
+		<script src="./src/js/jquery.validate.min.js"></script>
 		<script src="./src/js/functions.js"></script>
+		<script src="./src/js/ajax.functions.js"></script>
 </body>
 </html>

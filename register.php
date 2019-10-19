@@ -21,7 +21,7 @@
 
 
 	<script src="./src/js/jquery-3.4.0.min.js"></script>
-	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+	<script src="./src/js/jquery.validate.min.js"></script>
 	<script src="./src/js/functions.js"></script>
 	<script src="./src/js/ajax.functions.js"></script>
 </body>
